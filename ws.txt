@@ -1,0 +1,34 @@
+Python program runs faster.
+
+My bash script
+#!/bin/bash
+
+min=0; max=0; sum=0; ave=0; count=0;
+
+for score in $(cut -f 9 amazon_reviews_us_Books_v1_02.tsv|tail -n +2);do
+                if [[ $min > $score ]]; then
+                        ((min=$score))
+                fi
+                if [[ $max < $score ]]; then
+                        ((max=$score))
+                fi
+                ((sum = $sum + $score))
+                ((count++))
+        done
+avg=$(echo "scale=5;$sum/$count"|bc)
+echo "min $min max $max avg $avg"
+
+
+Output:
+$ time ./numbers.sh
+min 0 max 15835 avg 9.33467
+
+real	1m7.657s
+user	1m7.061s
+sys	0m0.761s
+
+$ time python3 numbers.py
+min 0 max 15835 avg 9.33467921636312
+real    0m3.737s
+user    0m1.681s
+sys     0m0.314s
