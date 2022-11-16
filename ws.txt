@@ -29,6 +29,6 @@ sys	0m0.761s
 
 $ time python3 numbers.py
 min 0 max 15835 avg 9.33467921636312
-real    0m3.737s
-user    0m1.681s
-sys     0m0.314s
+real	0m19.273s
+user	0m18.792s
+sys	0m0.480s
